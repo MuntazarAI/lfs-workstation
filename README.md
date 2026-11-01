@@ -1,10 +1,30 @@
 # LFS Workstation
 
+<p align="center">
+  <img src="docs/assets/lfs-workstation-banner.svg" alt="LFS Workstation — Linux From Source, built step by step" width="100%">
+</p>
+
+<p align="center">
+  <a href="https://github.com/MuntazarAI/lfs-workstation"><img src="https://img.shields.io/github/stars/MuntazarAI/lfs-workstation?style=flat-square" alt="GitHub stars"></a>
+  <a href="https://github.com/MuntazarAI/lfs-workstation/issues"><img src="https://img.shields.io/github/issues/MuntazarAI/lfs-workstation?style=flat-square" alt="Open issues"></a>
+  <a href="https://github.com/MuntazarAI/lfs-workstation/commits/main"><img src="https://img.shields.io/github/last-commit/MuntazarAI/lfs-workstation?style=flat-square" alt="Last commit"></a>
+  <img src="https://img.shields.io/badge/status-in%20progress-53d6b0?style=flat-square" alt="Project status: in progress">
+</p>
+
+<p align="center"><strong>Build it. Understand it. Verify it. Document it.</strong></p>
+
 A hands-on engineering project to build a practical Linux workstation from **Linux From Scratch (LFS) 13.1-systemd** and **Beyond Linux From Scratch (BLFS) 13.1-systemd**.
 
 The purpose is to understand how a Linux system is assembled, keep the build reproducible, and eventually create a lightweight development environment for Python, AI, and the existing JARVIS OS project.
 
 > **Project status:** In progress. This repository is a build log and documentation project—not a ready-to-install Linux distribution.
+
+
+## The workstation build, at a glance
+
+The banner above is an original project illustration, not a screenshot or a claim that every stage is complete. The current system has progressed beyond the initial base build: the LFS 13.1-systemd VM boots, the VGEM-enabled Linux 7.1.8 kernel is running, Mesa software rendering is installed, and Xorg plus the libinput input stack have been built. A complete graphical desktop is still being tested and configured.
+
+![Illustrative LFS workstation build roadmap showing base system, toolchain, kernel and system services, graphics and input, and the planned desktop](docs/assets/lfs-build-roadmap.svg)
 
 ## Contents
 
