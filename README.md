@@ -13,6 +13,7 @@ The purpose is to understand how a Linux system is assembled, keep the build rep
 - [Verified progress](#verified-progress)
 - [Engineering principles](#engineering-principles)
 - [Roadmap](#roadmap)
+- [Documentation](#documentation)
 - [Build and verification notes](#build-and-verification-notes)
 - [Official references](#official-references)
 - [Scope and limitations](#scope-and-limitations)
@@ -87,6 +88,12 @@ Git's optional Rust component was disabled because Cargo was not installed in th
 - [ ] Set up Python and development dependencies
 - [ ] Review the existing JARVIS OS requirements and integrate what the system can support
 - [ ] Document setup, recovery, and maintenance procedures
+
+## Documentation
+
+- [Documentation index](docs/README.md)
+- [Build log](docs/build-log.md)
+- [Troubleshooting notes](docs/troubleshooting.md)
 
 ## Build and verification notes
 
