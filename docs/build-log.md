@@ -51,6 +51,23 @@ This log records the current verified progress of the LFS Workstation build. It 
   ```
 - Scope note: disabling the Rust component means Rust-dependent optional Git functionality is not included in this build.
 
+### FreeType 2.14.3
+
+- Status: built and installed.
+- Verification: the installed header reports FreeType 2.14.3; `pkg-config --modversion freetype2` reports the library/pkg-config version `26.6.20`.
+
+### Fontconfig 2.18.3
+
+- Status: installed and verified.
+- Source archive MD5: `ce819e229ca6fb7d1be47a192d6681a3` (verified before extraction/build).
+- Verification:
+  ```text
+  pkg-config --modversion fontconfig
+  2.18.3
+  fc-cache --version
+  fontconfig version 2.18.3
+  ```
+
 ## Source verification notes
 
 Checksums are useful only when compared with a trustworthy value published by the upstream project or its official release instructions. The MD5 values above preserve the checks recorded during this build; use a stronger upstream-published checksum when available.
@@ -60,4 +77,5 @@ Checksums are useful only when compared with a trustworthy value published by th
 - [ ] Verify HTTPS downloads with the installed cURL.
 - [ ] Review Git's basic operation and configuration.
 - [ ] Select essential command-line and networking utilities.
-- [ ] Begin graphical-stack planning from the matching BLFS book.
+- [x] Install and verify FreeType 2.14.3 and Fontconfig 2.18.3.
+- [ ] Build the remaining graphical stack from the matching BLFS book.
