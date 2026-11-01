@@ -1,29 +1,43 @@
 # LFS Workstation
 
-A learning project to build a practical, custom Linux workstation from **Linux From Scratch (LFS) 13.1-systemd** and **Beyond Linux From Scratch (BLFS) 13.1-systemd**.
+A hands-on engineering project to build a practical Linux workstation from **Linux From Scratch (LFS) 13.1-systemd** and **Beyond Linux From Scratch (BLFS) 13.1-systemd**.
 
-The goal is to understand how a Linux system is assembled, document each step reproducibly, and eventually create a lightweight development environment for working on the existing JARVIS OS project.
+The purpose is to understand how a Linux system is assembled, keep the build reproducible, and eventually create a lightweight development environment for Python, AI, and the existing JARVIS OS project.
 
-> **Status:** In progress. This repository documents the build; it is not a ready-to-install distribution.
+> **Project status:** In progress. This repository is a build log and documentation project—not a ready-to-install Linux distribution.
 
-## Goals
+## Contents
+
+- [Project goals](#project-goals)
+- [Build environment](#build-environment)
+- [Verified progress](#verified-progress)
+- [Engineering principles](#engineering-principles)
+- [Roadmap](#roadmap)
+- [Build and verification notes](#build-and-verification-notes)
+- [Official references](#official-references)
+- [Scope and limitations](#scope-and-limitations)
+
+## Project goals
 
 - Build and maintain a custom LFS/BLFS system.
-- Keep notes on build commands, dependencies, verification, and troubleshooting.
-- Add a lightweight desktop environment and everyday workstation applications.
-- Prepare a development environment for Python, software engineering, and AI projects.
-- Later, evaluate and integrate the existing JARVIS OS project without duplicating or restarting its architecture.
+- Document versions, dependencies, commands, checksums, tests, and troubleshooting.
+- Add a lightweight graphical desktop and practical workstation applications.
+- Prepare a development environment for software engineering, Python, and AI.
+- Later, assess and integrate the existing JARVIS OS project without restarting or duplicating its architecture.
 
-## Current environment
+## Build environment
 
-- **Base:** Linux From Scratch 13.1-systemd
-- **Architecture:** x86_64
-- **Build environment:** Virtual machine on a Fedora host
-- **VM resources:** 4 vCPUs, 5 GiB RAM, 80 GiB virtual disk
-- **Compiler:** GCC 16.2.0
-- **Build parallelism:** Usually `make -j2` to fit the VM's resources
+| Item | Details |
+|---|---|
+| Base system | LFS 13.1-systemd |
+| Architecture | x86_64 |
+| Build host | Fedora, using a virtual machine |
+| VM resources | 4 vCPUs, 5 GiB RAM, 80 GiB virtual disk |
+| Compiler | GCC / G++ 16.2.0 |
+| Build tool | GNU Make 4.4.1 |
+| Typical parallelism | `make -j2` |
 
-## Build progress
+## Verified progress
 
 | Component | Version | Status |
 |---|---:|---|
@@ -31,62 +45,75 @@ The goal is to understand how a Linux system is assembled, document each step re
 | GCC / G++ | 16.2.0 | Available |
 | GNU Make | 4.4.1 | Available |
 | OpenSSL | 4.0.1 | Available |
-| CMake | 4.4.2 | Built and installed |
+| CMake | 4.4.2 | Built, installed, and version-checked |
 | cURL / libcurl | 8.21.0 | Built and installed with OpenSSL, zlib, and zstd |
 | PCRE2 | 10.47 | Available for Git configuration |
-| Git | 2.55.0 | Source checksum verified; configuration completed; build and installation pending |
+| Git | 2.55.0 | Built with optional Rust support disabled; installed and verified |
 | Xfce desktop | — | Planned |
 | Browser and everyday applications | — | Planned |
 | Python / AI development environment | — | Planned |
 | JARVIS OS integration | — | Planned |
 
-This table reflects the progress recorded in the project notes and will be updated as work is verified.
+Git installation was verified in the LFS system:
 
-## Principles
+```text
+git version 2.55.0
+/usr/bin/git
+/usr/libexec/git-core
+```
 
-1. **Follow the official book.** Use the matching LFS/BLFS 13.1-systemd documentation and package instructions.
-2. **Verify source archives.** Check published checksums before extracting and compiling source code.
-3. **Build as an unprivileged user.** Run configure and compilation as the normal build user; use root only for installation steps that require system-wide writes.
-4. **Keep notes reproducible.** Record versions, configure options, test outcomes, and relevant fixes.
-5. **Install only what is needed.** Add dependencies in a deliberate order instead of attempting to install every BLFS package.
-6. **Protect secrets and personal data.** Never commit credentials, private keys, tokens, private configuration, or unrelated backups.
+Git's optional Rust component was disabled because Cargo was not installed in the LFS environment. This does not mean Rust or Cargo is installed, and it does not imply that every optional Git feature is enabled.
 
-## Planned roadmap
+## Engineering principles
 
-- [ ] Finish Git 2.55.0 build and installation; verify `git --version`
-- [ ] Check basic HTTPS downloads and source verification
-- [ ] Install selected command-line and networking tools
-- [ ] Build the graphical stack using the official BLFS instructions
+1. **Follow the matching official book.** Use LFS/BLFS 13.1-systemd instructions for package configuration and installation.
+2. **Verify source archives.** Check a published checksum before extracting and compiling.
+3. **Build as an unprivileged user.** Configure and compile as the normal build user; use root for system-wide installation when required.
+4. **Record reproducible details.** Keep versions, configure options, test results, and fixes in the project notes.
+5. **Install deliberately.** Add only the dependencies and applications needed for the intended workstation.
+6. **Protect private data.** Never commit credentials, access tokens, private keys, personal backups, or private configuration.
+7. **Report status honestly.** Mark a component complete only after verifying it on the actual system.
+
+## Roadmap
+
+- [x] Build and install CMake 4.4.2
+- [x] Build and install cURL 8.21.0
+- [x] Build and install Git 2.55.0
+- [ ] Record and test basic HTTPS downloads and source verification
+- [ ] Select essential command-line and networking tools
+- [ ] Build the required graphical stack using BLFS instructions
 - [ ] Install and configure Xfce
 - [ ] Add a browser, terminal, file manager, editor, and audio support
 - [ ] Set up Python and development dependencies
-- [ ] Review the existing JARVIS OS requirements and integrate only what the system can support
-- [ ] Document final setup, recovery, and maintenance steps
+- [ ] Review the existing JARVIS OS requirements and integrate what the system can support
+- [ ] Document setup, recovery, and maintenance procedures
 
-## Build notes
+## Build and verification notes
 
-For this VM, two parallel build jobs are the default:
+The VM has 4 vCPUs and 5 GiB RAM, so two parallel jobs are the default for builds:
 
 ```bash
 make -j2
 ```
 
-Do not run this blindly for every package: use each package's official BLFS instructions, required configuration, tests, and installation procedure.
+Use each package's documented build procedure rather than applying this command blindly to every package. Run package tests when practical and record any failures or skipped tests.
 
-### Verified source archives so far
+### Verified source archives
 
-- **CMake 4.4.2** — source archive checksum verified before building.
-- **cURL 8.21.0** — MD5 `230131079987135cbe1eadb77a04af57` verified before building.
-- **Git 2.55.0** — MD5 `758c02a1b621cc0868ee0a0d99573e6b` verified; configuration succeeded. Compilation and installation are not yet complete.
+| Package | Version | Recorded checksum |
+|---|---:|---|
+| cURL | 8.21.0 | MD5: `230131079987135cbe1eadb77a04af57` |
+| Git | 2.55.0 | MD5: `758c02a1b621cc0868ee0a0d99573e6b` |
+| CMake | 4.4.2 | Checksum verified before building; see the original package notes for the exact value |
 
-MD5 is recorded here to match the source checksum provided by the corresponding package instructions; prefer stronger published checksums when available.
+The cURL and Git MD5 values above are recorded to preserve the checks used during this build. Prefer a stronger checksum (such as SHA-256) when published by the package source.
 
-## Documentation
+## Official references
 
 - [Linux From Scratch](https://www.linuxfromscratch.org/lfs/)
 - [Beyond Linux From Scratch](https://www.linuxfromscratch.org/blfs/)
 - [BLFS 13.1-systemd book](https://www.linuxfromscratch.org/blfs/view/13.1-systemd/)
 
-## Scope
+## Scope and limitations
 
-This repository is a personal learning and engineering log. Package availability, build results, and planned features are not claims of a production-ready or secure general-purpose distribution. Each stage will be marked complete only after it has been tested on the actual system.
+This is a personal learning and engineering log. It is not currently a general-purpose distribution or a production security claim. Hardware support, package availability, optional features, and planned capabilities must be verified on the actual system as the project develops.
