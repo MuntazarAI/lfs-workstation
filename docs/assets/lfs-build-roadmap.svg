@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 260" role="img" aria-labelledby="title desc">
+<title id="title">LFS Workstation build roadmap</title><desc id="desc">An illustrative five-stage sequence: base system, toolchain, kernel and services, graphics and input, then desktop and applications. Stages one through four are marked as built but still require integrated testing; desktop and applications are planned.</desc>
+<rect width="1400" height="260" rx="18" fill="#0b1419"/><text x="40" y="42" fill="#eaf7f0" font-family="Arial, sans-serif" font-size="23" font-weight="700">BUILD LAYERS · VERIFIED MILESTONES</text>
+<g font-family="monospace" font-size="14">
+<g transform="translate(35 75)"><rect width="245" height="125" rx="12" fill="#153a2e" stroke="#70d993"/><text x="20" y="32" fill="#a5f0ba">01 / BASE</text><text x="20" y="64" fill="#f1fff5" font-size="17">LFS system</text><text x="20" y="96" fill="#80dda0">BOOTED</text></g>
+<path d="M282 137h16" stroke="#80dda0" stroke-width="3"/><path d="M292 130l8 7-8 7" fill="none" stroke="#80dda0" stroke-width="3"/>
+<g transform="translate(305 75)"><rect width="245" height="125" rx="12" fill="#153a2e" stroke="#70d993"/><text x="20" y="32" fill="#a5f0ba">02 / CORE</text><text x="20" y="64" fill="#f1fff5" font-size="17">Toolchain + services</text><text x="20" y="96" fill="#80dda0">BUILT</text></g>
+<path d="M552 137h16" stroke="#80dda0" stroke-width="3"/><path d="M562 130l8 7-8 7" fill="none" stroke="#80dda0" stroke-width="3"/>
+<g transform="translate(575 75)"><rect width="245" height="125" rx="12" fill="#15313a" stroke="#6bcad0"/><text x="20" y="32" fill="#9ce9eb">03 / GRAPHICS</text><text x="20" y="64" fill="#f1ffff" font-size="17">Mesa + Xorg + input</text><text x="20" y="96" fill="#9ce9eb">BUILT · TESTING</text></g>
+<path d="M822 137h16" stroke="#9ce9eb" stroke-width="3"/><path d="M832 130l8 7-8 7" fill="none" stroke="#9ce9eb" stroke-width="3"/>
+<g transform="translate(845 75)"><rect width="245" height="125" rx="12" fill="#263127" stroke="#bdcf8a"/><text x="20" y="32" fill="#d9e8a9">04 / DESKTOP</text><text x="20" y="64" fill="#fbffef" font-size="17">Window manager + session</text><text x="20" y="96" fill="#d9e8a9">NEXT</text></g>
+<path d="M1092 137h16" stroke="#d9e8a9" stroke-width="3"/><path d="M1102 130l8 7-8 7" fill="none" stroke="#d9e8a9" stroke-width="3"/>
+<g transform="translate(1115 75)"><rect width="245" height="125" rx="12" fill="#202c34" stroke="#7795a8" stroke-dasharray="5 4"/><text x="20" y="32" fill="#9ebbd0">05 / WORKSTATION</text><text x="20" y="64" fill="#f1f8fc" font-size="17">Apps + development</text><text x="20" y="96" fill="#9ebbd0">PLANNED</text></g>
+</g></svg>
