@@ -50,6 +50,8 @@ The purpose is to understand how a Linux system is assembled, keep the build rep
 | cURL / libcurl | 8.21.0 | Built and installed with OpenSSL, zlib, and zstd |
 | PCRE2 | 10.47 | Available for Git configuration |
 | Git | 2.55.0 | Built with optional Rust support disabled; installed and verified |
+| FreeType | 2.14.3 | Installed; header version verified |
+| Fontconfig | 2.18.3 | Installed; `pkg-config` and `fc-cache` verified |
 | Xfce desktop | — | Planned |
 | Browser and everyday applications | — | Planned |
 | Python / AI development environment | — | Planned |
@@ -80,6 +82,7 @@ Git's optional Rust component was disabled because Cargo was not installed in th
 - [x] Build and install CMake 4.4.2
 - [x] Build and install cURL 8.21.0
 - [x] Build and install Git 2.55.0
+- [x] Build and verify FreeType 2.14.3 and Fontconfig 2.18.3
 - [ ] Record and test basic HTTPS downloads and source verification
 - [ ] Select essential command-line and networking tools
 - [ ] Build the required graphical stack using BLFS instructions
@@ -111,6 +114,7 @@ Use each package's documented build procedure rather than applying this command 
 |---|---:|---|
 | cURL | 8.21.0 | MD5: `230131079987135cbe1eadb77a04af57` |
 | Git | 2.55.0 | MD5: `758c02a1b621cc0868ee0a0d99573e6b` |
+| Fontconfig | 2.18.3 | MD5: `ce819e229ca6fb7d1be47a192d6681a3` |
 | CMake | 4.4.2 | Checksum verified before building; see the original package notes for the exact value |
 
 The cURL and Git MD5 values above are recorded to preserve the checks used during this build. Prefer a stronger checksum (such as SHA-256) when published by the package source.
